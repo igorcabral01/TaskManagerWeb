@@ -1,0 +1,27 @@
+<div class="tarefas-container">
+  <h2>Minhas Tarefas</h2>
+  <form (ngSubmit)="adicionarTarefa()" class="form-tarefa" autocomplete="off">
+    <mat-form-field appearance="outline">
+      <mat-label>Título</mat-label>
+  <input matInput [(ngModel)]="novaTarefa.titulo" name="titulo" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Descrição</mat-label>
+  <input matInput [(ngModel)]="novaTarefa.descricao" name="descricao" required />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Adicionar</button>
+  </form>
+
+  <table mat-table [dataSource]="tarefas" class="mat-elevation-z2">
+    <ng-container matColumnDef="titulo">
+      <th mat-header-cell *matHeaderCellDef>Título</th>
+      <td mat-cell *matCellDef="let tarefa">{{ tarefa.titulo }}</td>
+    </ng-container>
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef>Descrição</th>
+      <td mat-cell *matCellDef="let tarefa">{{ tarefa.descricao }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="['titulo', 'descricao']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['titulo', 'descricao'];"></tr>
+  </table>
+</div>

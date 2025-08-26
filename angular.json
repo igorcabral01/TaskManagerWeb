@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "nome-do-app": {
+    "TaskManager": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -22,6 +22,7 @@
               }
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css"
             ],
             "server": "src/main.server.ts",
@@ -58,10 +59,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "nome-do-app:build:production"
+              "buildTarget": "TaskManager:build:production"
             },
             "development": {
-              "buildTarget": "nome-do-app:build:development"
+              "buildTarget": "TaskManager:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,5 +87,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "695bf40e-fbf1-4eac-98c0-3eab1298eda5"
   }
 }
