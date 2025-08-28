@@ -1,57 +1,72 @@
-<div class="login-container">
-  <h2>Login</h2>
-  <form (ngSubmit)="onLogin()">
-    <mat-form-field appearance="outline">
-      <mat-label>Usuário</mat-label>
-      <input matInput type="text" name="username" required />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Senha</mat-label>
-      <input matInput type="password" name="password" required />
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Entrar</button>
-  </form>
+<div class="login-bg">
+  <div class="login-card">
+    <div class="login-header">
+      <mat-icon style="font-size: 48px; color: #1976d2;">lock</mat-icon>
+      <h2>Entrar no TaskManager</h2>
+    </div>
+    <form (ngSubmit)="onLogin()">
+      <mat-form-field appearance="outline" class="login-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" name="email" [(ngModel)]="email" required />
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="login-field">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" name="senha" [(ngModel)]="senha" required />
+        <mat-icon matSuffix>vpn_key</mat-icon>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" class="login-btn">Entrar</button>
+      <div *ngIf="error" class="login-error">{{ error }}</div>
+    </form>
+  </div>
 </div>
 <style>
-.form-group {
-  margin-bottom: 18px;
+.login-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #1976d2 0%, #42a5f5 100%);
 }
-.form-group label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 500;
-}
-.form-group input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-button[type="submit"] {
-  width: 100%;
-}
-
-.login-container {
-  max-width: 350px;
-  margin: 60px auto;
-  padding: 32px;
+.login-card {
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 40px 32px 32px 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  min-width: 340px;
+  max-width: 380px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-.login-container h2 {
-  text-align: center;
+.login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 24px;
 }
-
-.mat-form-field {
+.login-header h2 {
+  margin: 12px 0 0 0;
+  font-weight: 600;
+  color: #1976d2;
+}
+.login-field {
   width: 100%;
   margin-bottom: 18px;
 }
-
-button.mat-raised-button {
+.login-btn {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 0;
+}
+.login-error {
+  color: #d32f2f;
+  margin-top: 16px;
+  text-align: center;
+  font-weight: 500;
 }
 </style>
+

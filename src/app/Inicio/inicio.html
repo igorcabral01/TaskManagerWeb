@@ -1,16 +1,116 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" opened class="sidenav">
-    <mat-toolbar color="primary">Menu</mat-toolbar>
-    <mat-nav-list>
-      <mat-list-item>Dashboard</mat-list-item>
-      <mat-list-item>Configurações</mat-list-item>
-      <mat-list-item> <button mat-button color="primary" routerLink="/tarefas">Tarefas</button> </mat-list-item>
-      <mat-list-item>Sair</mat-list-item>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div class="content">
-      <h2>Bem-vindo à página inicial!</h2>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="inicio-bg">
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened class="sidenav">
+      <mat-toolbar color="primary">Menu</mat-toolbar>
+      <mat-nav-list>
+        <mat-list-item>Dashboard</mat-list-item>
+        <mat-list-item>Configurações</mat-list-item>
+        <mat-list-item>
+          <button mat-raised-button color="primary" (click)="abrirModalTarefa()" style="width: 100%;">
+            <mat-icon>add</mat-icon> Criar Tarefa
+          </button>
+        </mat-list-item>
+        <mat-list-item> <button mat-button color="primary" routerLink="/tarefas">Tarefas</button> </mat-list-item>
+        <mat-list-item>Sair</mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="inicio-content">
+        <ng-container *ngIf="!acessoNegado; else negado">
+          <h2 class="inicio-title"><mat-icon style="vertical-align: middle; color: #1976d2;">home</mat-icon> Bem-vindo ao TaskManager!</h2>
+          <!-- O formulário agora está no modal -->
+          <div class="inicio-listas">
+            <div class="inicio-lista">
+              <h3>Tarefas</h3>
+              <mat-list>
+                <mat-list-item *ngFor="let t of tarefas">
+                  <mat-icon matListIcon color="primary">check_circle</mat-icon>
+                  <div matLine>{{ t.nome }}</div>
+                  <div matLine class="inicio-projeto">Projeto: {{ t.projeto }}</div>
+                  <div matLine class="inicio-status">Status: {{ t.status }}</div>
+                </mat-list-item>
+              </mat-list>
+            </div>
+            <div class="inicio-lista">
+              <h3>Projetos</h3>
+              <mat-list>
+                <mat-list-item *ngFor="let p of projetos">
+                  <mat-icon matListIcon color="accent">folder</mat-icon>
+                  <div matLine>{{ p.nome }}</div>
+                  <div matLine class="inicio-desc">{{ p.descricao }}</div>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #negado>
+          <h2 style="color: red;">Acesso negado</h2>
+          <p>Você precisa estar autenticado para acessar esta página.</p>
+        </ng-template>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+<style>
+.inicio-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #1976d2 0%, #42a5f5 100%);
+}
+.sidenav-container {
+  min-height: 100vh;
+  background: transparent;
+}
+.sidenav {
+  width: 220px;
+  background: #fff;
+  border-radius: 0 16px 16px 0;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.08);
+}
+.inicio-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 48px 0 0 0;
+}
+.inicio-title {
+  font-weight: 600;
+  color: #1976d2;
+  margin-bottom: 32px;
+  font-size: 2rem;
+}
+.inicio-listas {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+}
+.inicio-lista {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 24px 18px;
+  min-width: 260px;
+  width: 100%;
+}
+.inicio-lista h3 {
+  color: #1976d2;
+  font-weight: 500;
+  margin-bottom: 18px;
+  font-size: 1.2rem;
+}
+.inicio-projeto {
+  color: #1976d2;
+  font-size: 13px;
+}
+.inicio-status {
+  color: #555;
+  font-size: 13px;
+}
+.inicio-desc {
+  color: #555;
+  font-size: 13px;
+}
+</style>

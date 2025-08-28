@@ -1,4 +1,51 @@
-# NomeDoApp
+# TaskManagerWeb
+
+## Descrição
+Aplicação web para gerenciamento de tarefas, projetos e usuários, construída com Angular e Angular Material. Possui autenticação JWT, integração com API REST, formulários dinâmicos e interface moderna.
+
+## Requisitos
+- Node.js 18+
+- Angular CLI
+- Backend .NET (API rodando em http://localhost:5105)
+
+## Instalação
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/igorcabral01/TaskManagerWeb.git
+   ```
+2. Instale as dependências:
+   ```sh
+   npm install
+   ```
+
+## Executando o projeto
+1. Inicie o backend .NET (API deve estar rodando em http://localhost:5105)
+2. Inicie o frontend Angular:
+   ```sh
+   ng serve
+   ```
+3. Acesse no navegador: [http://localhost:4200](http://localhost:4200)
+
+## Funcionalidades
+- Login com autenticação JWT
+- Criação e edição de tarefas
+- Dropdowns dinâmicos para usuários e projetos
+- Proteção de rotas
+- Integração com API REST
+- Interface responsiva com Angular Material
+
+## Estrutura de pastas
+- `src/app/Inicio/` - Componentes principais (formulário de tarefa, página inicial)
+- `src/app/Login/` - Autenticação
+- `src/app/` - Configurações, rotas, enums
+
+## Observações
+- Certifique-se que a API está rodando antes de iniciar o frontend.
+- As datas são enviadas no padrão ISO 8601 para compatibilidade com DateTime no backend.
+- Para dúvidas ou problemas, consulte os logs do navegador e do backend.
+
+## Autor
+Igor Cabral
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.0.
 
